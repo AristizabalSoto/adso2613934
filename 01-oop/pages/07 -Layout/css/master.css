@@ -76,6 +76,13 @@ main.cuerpo {
         margin-bottom: 40px;
     }
 
+    .cabecera_users {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 40px;
+    }
+
 
     .img_perfil_usuario {
         position: relative;
@@ -257,6 +264,9 @@ main.cuerpo {
         text-align: center;
         margin: 0;
         color: var(--morado);
+        font-weight: 500;
+        font-size: 22px;
+        
     }
 
 
@@ -287,8 +297,24 @@ main.cuerpo {
         margin-left: 20px;
     }
 
+    .icoback-users {
+        margin-left: 10px;
+    }
+
     .botonlogin {
         margin-top: 30px;
+        button {
+            cursor: pointer;
+            border: none;
+            outline: none;
+            background: url(../images/btn2.png)no-repeat center;
+            height: 60px;
+            width: 260px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+        }
     }
 
     .botonregister {
@@ -303,6 +329,23 @@ main.cuerpo {
         margin-left: auto;
         margin-right: 5px;
         margin-top: 40px;
+    }
+
+    .botonuser {
+        margin-top: -60px;
+        margin-bottom: 30px;
+        button {
+            cursor: pointer;
+            border: none;
+            outline: none;
+            background: url(../images/btn3.png)no-repeat center;
+            height: 60px;
+            width: 260px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+        }
     }
 
     .botonprofyle {
@@ -335,6 +378,10 @@ main.cuerpo {
 
     .logotitulo-dash {
         padding: 0px 0px 0px 20px;
+    }
+
+    .logotitulo-users {
+        padding: 0px 50px 0px 70px;
     }
 
     /* ______________________________________________________________________________________________________________________________ */
@@ -713,19 +760,6 @@ main.cuerpo {
 
     /* estilos para el footer */
 
-    button {
-        cursor: pointer;
-        border: none;
-        outline: none;
-        background: url(../images/btn2.png)no-repeat center;
-        height: 60px;
-        width: 260px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: auto;
-    }
-
     .recordar_contraseña{
         display: flex;
         justify-content: center;
@@ -734,4 +768,64 @@ main.cuerpo {
         margin-top: 1rem;
     }
 
+    /* __________________________________________ */
+
+    #imagenContenedor {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 250px;
+        height: 170px;
+        overflow: hidden;
+        background: url(../images/marco-perfil.png) no-repeat;
+        background-size: 80%;
+        left: 100px;
+    }
+    
+    #imagenContenedor img {
+        display: flex;
+        width: 150px;
+        height: auto;
+        left: 80px;
+        margin-right: 60px;
+        margin-top: -40px;
+        object-fit: contain;
+        border-radius: 5px;
+        border: 2px solid var(--magenta);
+        
+    }
+    
+    .img_perfil_usuario{
+        
+        border: none;
+    }
+
+
+    #uploadText {
+        position: absolute;
+        top: 40%;
+        left: 40%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        font-family: Arial, sans-serif;
+        color: var(--cian); /* Cambiar color del texto */
+        font-size: 16px; /* Cambiar tamaño del texto */
+    }
+    
+    #uploadText p {
+        margin: 0;
+    }
+    
+    #inputFile {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 70%;
+        height: 70%;
+        opacity: 0;
+        cursor: pointer;
+        border: none;
+    }
+    
 }
