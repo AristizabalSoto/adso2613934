@@ -108,6 +108,10 @@ main.cuerpo {
         margin-top: -30px;
     }
 
+    .contenedor_titulos_myprofile2 {
+        margin-top: 60px;
+    }
+
     .contenedor_modulos_dash {
         display: flex;
         flex-wrap: wrap;
@@ -257,15 +261,17 @@ main.cuerpo {
         font-weight: 400;
         color: var(--magenta);
         text-align: center;
+        font-size: 16px;
         margin: 0;
+        width: 150px;
     }
 
     .parrafo_modulo h3 {
         text-align: center;
         margin: 0;
         color: var(--morado);
-        font-weight: 500;
-        font-size: 22px;
+        font-weight: 600;
+        font-size: 16px;
         
     }
 
