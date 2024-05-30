@@ -74,6 +74,14 @@ main.cuerpo {
         justify-content: center;
         align-items: center;
         margin-bottom: 40px;
+        margin-left: 65px;
+    }
+
+    .cabecera_dash2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 40px;
     }
 
     .cabecera_users {
