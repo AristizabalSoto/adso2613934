@@ -98,6 +98,13 @@ main.cuerpo {
         margin-bottom: 40px;
     }
 
+    .cabecera_add {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+
     .img_perfil_usuario {
         position: relative;
         left: 50%;
@@ -325,6 +332,11 @@ main.cuerpo {
         margin-left: 10px;
     }
 
+    .icoback-add {
+        margin-left: 32px;
+    }
+
+
     .botonlogin {
         margin-top: 30px;
         button {
@@ -423,6 +435,11 @@ main.cuerpo {
     .logotitulo-gamer {
         padding: 0px 40px 0px 70px;
     }
+
+    .logotitulo-add {
+        padding: 0px 60px 0px 70px;
+    }
+
 
     /* ______________________________________________________________________________________________________________________________ */
 
