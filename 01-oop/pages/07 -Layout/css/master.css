@@ -332,7 +332,19 @@ main.cuerpo {
     }
 
     .botonregister {
-        margin-top: 20px;
+        margin-top: -5px;
+        button {
+            cursor: pointer;
+            border: none;
+            outline: none;
+            background: url(../images/btn2.png)no-repeat center;
+            height: 60px;
+            width: 260px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+        }
     }
 
     .botonview {
@@ -647,10 +659,6 @@ main.cuerpo {
         margin-left: 5px;
     }
 
-    .slidercat:hover h4:hover {
-        color: var(--cian);
-    }
-
     a {
         text-decoration: none;
     }
@@ -659,7 +667,11 @@ main.cuerpo {
         font-family: var(--ff-title);
         font-size: 1rem;
         font-weight: 600;
-        color: var(--magenta);
+        color: var(--cian);
+    }
+
+    .slidercat:hover h4:hover {
+        color: var(--blanco);
     }
 
     .slidercat p {
@@ -790,7 +802,7 @@ main.cuerpo {
         align-items: center;
         position: relative;
         width: 250px;
-        height: 170px;
+        height: 150px;
         overflow: hidden;
         background: url(../images/marco-perfil.png) no-repeat;
         background-size: 80%;
@@ -799,20 +811,17 @@ main.cuerpo {
     
     #imagenContenedor img {
         display: flex;
+        object-fit:contain;
         width: 150px;
-        height: auto;
+        height: 80px;
         left: 80px;
         margin-right: 60px;
-        margin-top: -40px;
-        object-fit: contain;
-        border-radius: 5px;
-        border: 2px solid var(--magenta);
+        margin-top: -20px;
         
     }
     
     .img_perfil_usuario{
-        
-        border: none;
+        border: none
     }
 
 
