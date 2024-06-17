@@ -9,7 +9,7 @@
 |3. MVC | Modelo Vista Controlador en PHP |
 |4. Laravel | Framework en PHP |
 
-![Hollow](http://tinyurl.com/pnn2eaz8)
+![Hollow](./07-Layout/images/logo-cabecera.svg)
 
 
 [Drive Slides PDF](https://drive.google.com/drive/folders/1cUEOsM44rpspMfyWvY_YlnXlIm9uffej?usp=sharing)# adso2613934
