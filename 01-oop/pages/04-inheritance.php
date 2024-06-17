@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>04- Inheritance</title>
-    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="../css/master.css">
     <style>
         section {
             background-color: #0009;
@@ -113,11 +113,11 @@
             <h2>Evolve your Pokemon</h2>
             <div class="pks">
             <?php
-                $pk = new Evolve('Charmander', 'Fire', 150, 'images/charmander.png');
+                $pk = new Evolve('Charmander', 'Fire', 150, '../images/charmander.png');
                 echo $pk->show();
-                $pk->levelUp('Charmeleon', 'Fire', 250, 'images/charmeleon.png');
+                $pk->levelUp('Charmeleon', 'Fire', 250, '../images/charmeleon.png');
                 echo $pk->show();
-                $pk->levelUp('Charizard', 'Fire-Fly', 450, 'images/charizard.png');
+                $pk->levelUp('Charizard', 'Fire-Fly', 450, '../images/charizard.png');
                 echo $pk->show();
             ?>
             </div>
