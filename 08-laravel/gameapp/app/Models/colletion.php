@@ -18,4 +18,14 @@ class Colletion extends Model
         'user_id',
         'game_id',
     ];
+
+    // Relationship: collection belongs to user
+    public function user() {
+        return $this ->belongsTo('App\Models\User');
+    }
+
+    // Relationship: collection belongs to game
+    public function game() {
+        return $this ->belongsTo('App\Models\Game');
+    }
 }
