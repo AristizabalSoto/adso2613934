@@ -33,7 +33,7 @@
                     <td>{{ $game->id }}</td>
                     <td>{{ $game->title }}</td>
                     <td>{{ $game->developer }}</td>
-                    <td>{{ $game->release_date }}</td>
+                    <td>{{ $game->releasedate }}</td>
                     <td>{{ $game->category->name }}</td>
                     <td>{{ $game->user->fullname }}</td>
                     <td>{{ $game->created_at->diffForHumans()}}</td>
