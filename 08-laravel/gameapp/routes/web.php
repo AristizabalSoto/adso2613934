@@ -1,54 +1,26 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Models\User;
-use Illuminate\Support\Carbon;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-// ----------------------------------------------------------------------------------------------------------------
-
-Route::get('/games/list', function () {
-    $games = App\Models\Game::all();
-    dd($games); 
-});
-
-// -------------------------------------------------------------------------------------------------------------
-
-Route::get('/consulta/{id}', function ($id) {
-    $user = User::findOrFail($id);
-    $fullName = $user->fullname;
-    $ageInYears = Carbon::parse($user->birthdate)->age;
-    $createdAt = $user->created_at->diffForHumans();
-
-    return "User: $fullName | Age: $ageInYears years | Created: $createdAt";
-});
-
-// ---------------------------------------------------------------------------------------------------------
-
-Route::get('/consulta', function () {
-    $users = User::take(20)->get();
-
-    $output = [];
-
-    foreach ($users as $user) {
-        $fullName = $user->fullname;
-        $ageInYears = Carbon::parse($user->birthdate)->age;
-        $createdAt = $user->created_at->diffForHumans();
-
-        $output[] = "User: $fullName | Age: $ageInYears years | Created: $createdAt";
-    }
-
-    return implode('<br>', $output);
-});
-
-// --------------------------------------------------------------------------------------------------------------
-
-Route::get('/games', function () {
-    $games = App\Models\Game::all();
-    return view('listgames')->with('games', $games);
+Route::get('/catalogue', function () {
+    return view('catalogue');
 });
 
 
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
