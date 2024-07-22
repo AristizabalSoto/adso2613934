@@ -25,17 +25,17 @@
                     <img class="ico-menu-title" src="../images/ico-menu-title.svg" alt="Menu">
                     <img class="ico-menu" src="../images/ico-menu.png" alt="Icon menu">
                     <menu class="contenido_menu">
-                        <a href="../index.html">
+                        <a href="{{ url('/') }}">
                             <img src="../images/ico-menu-home.png" alt="Home Icon">
                             Home
                         </a>
                         <hr>
-                        <a href="./login.html">
+                        <a href="{{ url('login') }}">
                             <img src="../images/ico-menu-login.png" alt="Login Icon">
                             Login
                         </a>
                         <hr>
-                        <a href="./register.html">
+                        <a href="{{ url('register') }}">
                             <img src="../images/ico-menu-register.png" alt="Register Icon">
                             Register
                         </a>
@@ -62,14 +62,14 @@
         <section class="slider owl-carousel owl-theme">
             <div>
                 <img class="item" src="../images/Slide-cat01.png" alt="Slide01">
-                <a href="./view_game.html">
+                <a href="{{ url('view_game') }}">
                     <h4>ramboin six</h4>
                 </a>
                 <p>Lorem ipsum dolor sit.</p>
             </div>
             <div>
                 <img class="item" src="../images/Slide-cat02.png" alt="Slide02">
-                <a href="./view_game.html">
+                <a href="{{ url('view_game') }}">
                     <h4>Skyrym</h4>
                 </a>
                 <p>Lorem ipsum dolor sit.</p>
@@ -85,14 +85,14 @@
         <section class="slider owl-carousel owl-theme">
             <div>
                 <img class="item" src="../images/Slide-cat03.png" alt="Slide03">
-                <a href="./view_game.html">
+                <a href="{{ url('view_game') }}">
                     <h4>Halo Reach</h4>
                 </a>
                 <p>Lorem ipsum dolor sit.</p>
             </div>
             <div>
                 <img class="item" src="../images/Slide-cat04.png" alt="Slide04">
-                <a href="./view_game.html">
+                <a href="{{ url('view_game') }}">
                     <h4>Resident Evil 4</h4>
                 </a>
                 <p>Lorem ipsum dolor sit.</p>

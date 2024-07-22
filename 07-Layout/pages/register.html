@@ -59,65 +59,75 @@
         </header>
 
         <!-- Registro -->
-        <form action="dashboard.html" method="get" class="contenedor_titulos_cajas_register">
+        <section class="scroll">
+            <form action="dashboard.html" method="get" class="contenedor_titulos_cajas_register">
 
-            <!-- contenedor con forma -->
-            <div id="imagenContenedor">
-                <div id="uploadText">
-                    <p>Upload Photo</p>
+                <!-- contenedor con forma -->
+                <div id="imagenContenedor">
+                    <div id="uploadText">
+                        <p>Upload Photo</p>
+                    </div>
+                    <img class="img_perfil_usuario" src="../images/transparent.png" alt="">
+                    <input type="file" id="inputFile" accept="image/*">
                 </div>
-                <img class="img_perfil_usuario" src="../images/transparent.png" alt="">
-                <input type="file" id="inputFile" accept="image/*">
-            </div>
 
-            <!-- contenedores input -->
-            <section class="contenedor_titulo_caja_register">
-                <label class="titulo_register">
-                    <h3>Fullname</h3>
-                </label>
-                <div class="caja">
-                    <input type="text" placeholder="Ingrese su nombre" required>
-                </div>
-            </section>
-            <section class="contenedor_titulo_caja_register">
-                <label class="titulo_register">
-                    <h3>Email</h3>
-                </label>
-                <div class="caja">
-                    <input type="email" placeholder="Ingrese su email" required>
-                </div>
-            </section>
-            <section class="contenedor_titulo_caja_register">
-                <label class="titulo_register">
-                    <h3>Phone</h3>
-                </label>
-                <div class="caja">
-                    <input type="tel" placeholder="Ingrese su teléfono" required>
-                </div>
-            </section>
-            <section class="contenedor_titulo_caja_register">
-                <label class="titulo_register">
-                    <h3>Birth Date</h3>
-                </label>
-                <div class="caja">
-                    <input type="date" placeholder="Ingrese su fecha de nacimiento" required>
-                </div>
-            </section>
-            <section class="contenedor_titulo_caja_register">
-                <label class="titulo_register">
-                    <h3>Password</h3>
-                </label>
-                <div class="caja">
-                    <input type="password" placeholder="Ingrese su contraseña" required>
-                </div>
-            </section>
-            <footer>
-                <div class="botonregister">
-                    <button type="submit" class="btn btn-explore">
-                        <img class="content-btn2-footer" src="../images/content-btn3-footer.svg" alt="Explore">
-                    </button>
-                </div>
-            </footer>
+                <!-- contenedores input -->
+                <section class="contenedor_titulo_caja_register">
+                    <label class="titulo_register">
+                        <h3>Fullname</h3>
+                    </label>
+                    <div class="caja">
+                        <input type="text" placeholder="Ingrese su nombre" required>
+                    </div>
+                </section>
+                <section class="contenedor_titulo_caja_register">
+                    <label class="titulo_register">
+                        <h3>Email</h3>
+                    </label>
+                    <div class="caja">
+                        <input type="email" placeholder="Ingrese su email" required>
+                    </div>
+                </section>
+                <section class="contenedor_titulo_caja_register">
+                    <label class="titulo_register">
+                        <h3>Phone</h3>
+                    </label>
+                    <div class="caja">
+                        <input type="tel" placeholder="Ingrese su teléfono" required>
+                    </div>
+                </section>
+                <section class="contenedor_titulo_caja_register">
+                    <label class="titulo_register">
+                        <h3>Birth Date</h3>
+                    </label>
+                    <div class="caja">
+                        <input type="date" placeholder="Ingrese su fecha de nacimiento" required>
+                    </div>
+                </section>
+                <section class="contenedor_titulo_caja_register">
+                    <label class="titulo_register">
+                        <h3>Password</h3>
+                    </label>
+                    <div class="caja">
+                        <input type="password" placeholder="Ingrese su contraseña" required>
+                    </div>
+                </section>
+                <section class="contenedor_titulo_caja_register">
+                    <label class="titulo_register">
+                        <h3>Confirm Password</h3>
+                    </label>
+                    <div class="caja">
+                        <input type="password" placeholder="Ingrese su contraseña" required>
+                    </div>
+                </section>
+                <footer>
+                    <div class="botonregister">
+                        <button type="submit" class="btn btn-explore">
+                            <img class="content-btn2-footer" src="../images/content-btn3-footer.svg" alt="Explore">
+                        </button>
+                    </div>
+                </footer>
+        </section>
         </form>
     </main>
 
