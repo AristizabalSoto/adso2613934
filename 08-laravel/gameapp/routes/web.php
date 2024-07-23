@@ -1,23 +1,18 @@
 <?php
 
+// routes/web.php
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+// Ruta para la vista Welcome
 Route::get('/', function () {
     return view('welcome');
 });
 
+// Ruta para la vista Catalogue
 Route::get('/catalogue', function () {
     return view('catalogue');
-});
-
-Route::get('register', function () {
-    return view('register');
-});
-
-Route::get('/view_game', function () {
-    return view('view_game');
-});
+})->name('catalogue');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

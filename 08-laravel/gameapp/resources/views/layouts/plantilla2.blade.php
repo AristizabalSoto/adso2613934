@@ -1,3 +1,5 @@
+<!-- resources/views/layouts/plantilla2.blade.php -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
+    <!-- Enlaces a hojas de estilo -->
     <link rel="stylesheet" href="{{ asset('css/fonts.css') }}">
     <link rel="stylesheet" href="{{ asset('css/master.css') }}">
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
@@ -14,9 +17,12 @@
 </head>
 
 <body>
+    <!-- Sección principal de la página -->
     <main class="@yield('class')">
+        <!-- Contenido dinámico -->
         @yield('content')
     </main>
+    <!-- Enlaces a scripts -->
     <script src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
     @yield('js')
