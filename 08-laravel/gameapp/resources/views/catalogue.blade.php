@@ -77,7 +77,7 @@
                     <a href="./view_game.html">
                         <h4>Skyrym</h4>
                     </a>
-                    <p>Lorem ipsum dolor sit.</p>
+                    <p>Lorem ipsum dolor sit a.</p>
                 </div>
             </section>
         </section>
