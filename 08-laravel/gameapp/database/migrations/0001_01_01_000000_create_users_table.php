@@ -7,17 +7,18 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Ejecuta las migraciones.
      */
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('document')->unique();
-            $table->string('name');
+            $table->string('fullname'); 
+            $table->string('gender'); 
             $table->date('birthdate');
             $table->string('photo')->default('no-photo.png');
-            $table->string('phone')->unique();
+            $table->string('phone');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -42,7 +43,7 @@ return new class extends Migration
     }
 
     /**
-     * Reverse the migrations.
+     * Reversa las migraciones.
      */
     public function down(): void
     {

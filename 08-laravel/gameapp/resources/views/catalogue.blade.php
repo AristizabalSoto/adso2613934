@@ -1,10 +1,8 @@
-<!-- Usa el layout 'plantilla2' -->
+{{-- gameeapp/resources/views/catalogue.blade.php --}}
+
 @extends('layouts.plantilla2')
 
-<!-- Título de la página -->
 @section('title', 'Catalogue')
-
-<!-- Clase para <main> -->
 @section('class', 'cuerpo')
 
 @section('content')
@@ -25,23 +23,24 @@
                     <path class="line bottom"
                         d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
                 </svg>
+                {{-- Contenido del menú --}}
                 <nav class="nav">
                     <img class="ico-menu-title" src="{{ asset('images/ico-menu-title.svg') }}" alt="Menu">
-                    <img class="ico-menu" src="{{ asset('images/ico-menu.png') }}" alt="Icon menu">
+                    <img class="ico-menu" src="{{ asset('images/ico-menu.png') }}" alt="Icon Menu">
                     <menu class="contenido_menu">
-                        <a href="{{ url('/') }}">
-                            <img src="{{ asset('images/ico-menu-home.png') }}" alt="Home Icon">
-                            Home
-                        </a>
-                        <hr>
-                        <a href="./login.html">
+                        <a href="{{ url('login') }}">
                             <img src="{{ asset('images/ico-menu-login.png') }}" alt="Login Icon">
                             Login
                         </a>
                         <hr>
-                        <a href="./register.html">
+                        <a href="{{ url('register') }}">
                             <img src="{{ asset('images/ico-menu-register.png') }}" alt="Register Icon">
                             Register
+                        </a>
+                        <hr>
+                        <a href="{{ url('catalogue') }}">
+                            <img src="{{ asset('images/ico-menu-catalogue.png') }}" alt="Catalogue Icon">
+                            Catalogue
                         </a>
                         <hr>
                     </menu>
@@ -50,54 +49,54 @@
         </section>
     </header>
 
+    <!-- Contenido del catálogo -->
     <section class="scroll">
-        <!-- caja de busqueda -->
+        <!-- Caja de búsqueda -->
         <div class="search-box">
             <input type="text" placeholder="Buscar">
             <i class="fas fa-filter filter-icon"></i>
         </div>
 
-        <!-- slider por categorias -->
-
-        <!-- categoria 1 -->
+        <!-- Slider por categorías -->
+        <!-- Categoría 1 -->
         <div class="contenedor_titulo_caja_catalogue">
-            <h3>Categories</h3>
+            <h3>Category 1</h3>
         </div>
         <section class="slidercat">
             <section class="slider owl-carousel owl-theme">
                 <div>
-                    <img class="item" src="../images/Slide-cat01.png" alt="Slide01">
-                    <a href="./view_game.html">
-                        <h4>ramboin six</h4>
+                    <img class="item" src="{{ asset('images/Slide-cat01.png') }}" alt="Slide01">
+                    <a href="{{ url('view_game') }}">
+                        <h4>Ramboin Six</h4>
                     </a>
                     <p>Lorem ipsum dolor sit.</p>
                 </div>
                 <div>
-                    <img class="item" src="../images/Slide-cat02.png" alt="Slide02">
-                    <a href="./view_game.html">
-                        <h4>Skyrym</h4>
+                    <img class="item" src="{{ asset('images/Slide-cat02.png') }}" alt="Slide02">
+                    <a href="{{ url('view_game') }}">
+                        <h4>Skyyrim</h4>
                     </a>
                     <p>Lorem ipsum dolor sit a.</p>
                 </div>
             </section>
         </section>
 
-        <!-- categoria 2 -->
+        <!-- Categoría 2 -->
         <div class="contenedor_titulo_caja_catalogue">
-            <h3>Categories</h3>
+            <h3>Category 2</h3>
         </div>
         <section class="slidercat">
             <section class="slider owl-carousel owl-theme">
                 <div>
-                    <img class="item" src="../images/Slide-cat03.png" alt="Slide03">
-                    <a href="./view_game.html">
+                    <img class="item" src="{{ asset('images/Slide-cat03.png') }}" alt="Slide03">
+                    <a href="{{ url('view_game') }}">
                         <h4>Halo Reach</h4>
                     </a>
                     <p>Lorem ipsum dolor sit.</p>
                 </div>
                 <div>
-                    <img class="item" src="../images/Slide-cat04.png" alt="Slide04">
-                    <a href="./view_game.html">
+                    <img class="item" src="{{ asset('images/Slide-cat04.png') }}" alt="Slide04">
+                    <a href="{{ url('view_game') }}">
                         <h4>Resident Evil 4</h4>
                     </a>
                     <p>Lorem ipsum dolor sit.</p>
@@ -105,45 +104,45 @@
             </section>
         </section>
 
-        <!-- categoria 3 -->
+        <!-- Categoría 3 -->
         <div class="contenedor_titulo_caja_catalogue">
-            <h3>Categories</h3>
+            <h3>Category 3</h3>
         </div>
         <section class="slidercat">
             <section class="slider owl-carousel owl-theme">
                 <div>
-                    <img class="item" src="../images/Slide-cat01.png" alt="Slide01">
-                    <a href="./view_game.html">
-                        <h4>ramboin six</h4>
+                    <img class="item" src="{{ asset('images/Slide-cat01.png') }}" alt="Slide01">
+                    <a href="{{ url('view_game') }}">
+                        <h4>Ramboin Six</h4>
                     </a>
                     <p>Lorem ipsum dolor sit.</p>
                 </div>
                 <div>
-                    <img class="item" src="../images/Slide-cat02.png" alt="Slide02">
-                    <a href="./view_game.html">
-                        <h4>Skyrym</h4>
+                    <img class="item" src="{{ asset('images/Slide-cat02.png') }}" alt="Slide02">
+                    <a href="{{ url('view_game') }}">
+                        <h4>Skyyrim</h4>
                     </a>
                     <p>Lorem ipsum dolor sit.</p>
                 </div>
             </section>
         </section>
 
-        <!-- categoria 4 -->
+        <!-- Categoría 4 -->
         <div class="contenedor_titulo_caja_catalogue">
-            <h3>Categories</h3>
+            <h3>Category 4</h3>
         </div>
         <section class="slidercat">
             <section class="slider owl-carousel owl-theme">
                 <div>
-                    <img class="item" src="../images/Slide-cat03.png" alt="Slide03">
-                    <a href="./view_game.html">
+                    <img class="item" src="{{ asset('images/Slide-cat03.png') }}" alt="Slide03">
+                    <a href="{{ url('view_game') }}">
                         <h4>Halo Reach</h4>
                     </a>
                     <p>Lorem ipsum dolor sit.</p>
                 </div>
                 <div>
-                    <img class="item" src="../images/Slide-cat04.png" alt="Slide04">
-                    <a href="./view_game.html">
+                    <img class="item" src="{{ asset('images/Slide-cat04.png') }}" alt="Slide04">
+                    <a href="{{ url('view_game') }}">
                         <h4>Resident Evil 4</h4>
                     </a>
                     <p>Lorem ipsum dolor sit.</p>
@@ -152,6 +151,8 @@
         </section>
     </section>
 @endsection
+
+{{-- js de la pagina --}}
 
 @section('js')
     <script>

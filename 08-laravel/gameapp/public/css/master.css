@@ -772,6 +772,79 @@ main.cuerpo {
         cursor: pointer;
     }
 
+    /* --------------------------------------------------------------------------- */
+
+    .caja-radio {
+        display: flex;
+        flex-direction: row; /* Alinea las opciones en una fila */
+        border-radius: 20px;
+        margin: 10px;
+        width: 100%; /* Ajusta el ancho según sea necesario */
+        max-width: 600px; /* Opcional: Ajusta el ancho máximo para la caja */
+        align-items: center; /* Centra los elementos verticalmente dentro de la fila */
+        justify-content: center; /* Centra los elementos horizontalmente dentro de la caja */
+        gap: 10px; /* Espacio entre las opciones de radio */
+    }
+    
+    /* Estilos para cada opción dentro de la caja de radio */
+    .caja-radio label {
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        color: var(--cian);
+        cursor: pointer;
+        font-family: var(--ff-body);
+        font-weight: 400;
+    }
+    
+    /* Estilos para los inputs de radio */
+    .caja-radio input[type="radio"] {
+        accent-color: var(--magenta); /* Cambia el color del botón de radio */
+        margin-right: 10px;
+    }
+    
+    /* Estilos para los textos dentro de las opciones */
+    .caja-radio span {
+        flex-grow: 1;
+    }
+    
+    /* Estilos para el botón de enviar dentro de la caja de radio */
+    .caja-radio button {
+        background-color: var(--cian);
+        color: var(--blanco);
+        border: none;
+        border-radius: 10px;
+        padding: 10px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+        margin-top: 10px;
+        width: 100%;
+    }
+    
+    /* Efecto hover para el botón de enviar */
+    .caja-radio button:hover {
+        background-color: var(--magenta);
+    }
+    
+    /* Efectos adicionales para mejorar la apariencia */
+    .caja-radio .option {
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid var(--cian);
+        margin-bottom: 5px;
+        background-color: var(--blanco);
+    }
+    
+    .caja-radio .option:hover {
+        background-color: var(--cian);
+        color: var(--blanco);
+    }
+    
+    .caja-radio .option input[type="radio"]:checked + span {
+        color: var(--magenta);
+    }
+
     /* --------------------------------------------------------------------------------------------------------------------------------- */
 
     /* Estilos para la caja de búsqueda */
@@ -895,3 +968,35 @@ main.cuerpo {
     }
     
 }
+
+/* Estilos generales para la caja de errores */
+.alert {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--blanco);
+    color: var(--morado);
+    border: 1px solid var(--cian);
+    font-family: var(--ff-body);
+    font-weight: 400;
+    width: 80%;
+    align-items: center;
+}
+
+/* Estilo para la lista de errores */
+.alert ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Estilo para cada elemento de la lista */
+.alert li {
+    margin-bottom: 10px;
+}
+
+/* Estilo para el mensaje de error (opcional) */
+.alert p {
+    margin: 0;
+    font-weight: bold;
+}
+
