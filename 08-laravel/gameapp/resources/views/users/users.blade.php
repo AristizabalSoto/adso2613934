@@ -22,9 +22,11 @@
                 <!-- Menú hamburguesa -->
                 <div class="burger-menu">
                     <svg class="btn-burger" viewBox="0 0 100 100" width="80">
-                        <path class="line top" d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
+                        <path class="line top"
+                            d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
                         <path class="line middle" d="m 70,50 h -40" />
-                        <path class="line bottom" d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
+                        <path class="line bottom"
+                            d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
                     </svg>
 
                     <!-- Navegación del menú hamburguesa -->
@@ -32,7 +34,8 @@
                         <section class="contenedor_titulos_myprofile2">
                             <!-- Imagen del perfil -->
                             <div class="img_perfil_adm">
-                                <img class="img_perfil_usuario" src="{{ asset('images/perfilusuario2.png') }}" alt="Profile Image">
+                                <img class="img_perfil_usuario" src="{{ asset('images/perfilusuario2.png') }}"
+                                    alt="Profile Image">
                             </div>
 
                             <!-- Información del usuario -->
@@ -43,7 +46,8 @@
                                     </div>
                                     <div class="botonprofyle">
                                         <a href="{{ url('catalogue') }}" class="btn btn-explore">
-                                            <img class="content-btn4-myprofyle" src="{{ asset('images/content-btn4-footer.svg') }}" alt="Explore">
+                                            <img class="content-btn4-myprofyle"
+                                                src="{{ asset('images/content-btn4-footer.svg') }}" alt="Explore">
                                         </a>
                                     </div>
                                 </div>
@@ -77,7 +81,7 @@
         <section class="scroll">
             <!-- Botón para añadir usuario -->
             <div class="botonuser">
-                <form action="{{ url('add') }}">
+                <form action="{{ url('users/create') }}">
                     <button class="btn-user" type="submit">
                         <img src="{{ asset('images/content-btn-add.svg') }}" alt="Add User">
                     </button>
@@ -100,7 +104,8 @@
                             </div>
                             <div class="boton_view_dash">
                                 <a href="{{ url('edit/' . $user->id) }}" class="btn btn-explore">
-                                    <img class="content-btn-view-dash" src="{{ asset('images/content-btn-view-users.svg') }}" alt="View User">
+                                    <img class="content-btn-view-dash"
+                                        src="{{ asset('images/content-btn-view-users.svg') }}" alt="View User">
                                 </a>
                             </div>
                         </section>
