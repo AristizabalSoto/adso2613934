@@ -1,4 +1,4 @@
-{{-- gameeapp/resources/views/dashboard.blade.php --}}
+{{--ubicacion: gameeapp/resources/views/dashboard.blade.php --}}
 
 @extends('layouts.plantilla2')
 
@@ -36,7 +36,7 @@
                             </div>
                         </section>
                         <menu class="contenedor_titulo_myprofile">
-                            <a href="{{ url('profile') }}">
+                            <a href="{{ url('myprofile') }}">
                                 <img src="{{ asset('images/ico-profyle.png') }}" alt="Ícono de perfil">
                                 My Profile
                             </a>

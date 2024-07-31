@@ -1,5 +1,7 @@
 <?php
 
+// Ubicación de este archivo: gameapp/database/factories/UserFactory.php
+
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -13,34 +15,38 @@ use Illuminate\Support\Str;
 class UserFactory extends Factory
 {
     /**
-     * The current password being used by the factory.
+     * La contraseña actual utilizada por la fábrica.
      */
-    protected static ?string $password;
+    protected static ?string $password = null;
 
     /**
-     * Define the model's default state.
+     * Define el estado predeterminado del modelo.
      *
      * @return array<string, mixed>
      */
     public function definition(): array
     {   
+        // Genera un género aleatorio
+        $gender = fake()->randomElement(['Male', 'Female']);
 
         return [
-            'document'          =>fake()->isbn13(),
-            'gender'            => $gender=fake()->randomElement(['Male','Female']),
-            'fullname'          => fake()->name($gender)." ".fake()->lastName(),
-            'birthdate'         => fake()->dateTimeBetween('-30 years','2004-01-01'),
+            'document'          => fake()->isbn13(),
+            'gender'            => $gender,
+            'fullname'          => fake()->name($gender) . " " . fake()->lastName(),
+            'birthdate'         => fake()->dateTimeBetween('-30 years', '2004-01-01'),
             'phone'             => fake()->phoneNumber(),
-            'photo'             => substr(fake()->image($dir = './public/images', $width = 50, $height = 50),13),
+            // Genera una imagen y obtiene la ruta relativa
+            'photo'             => substr(fake()->image($dir = './public/images', $width = 50, $height = 50), 13),
             'email'             => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
+            // Genera una contraseña hashed si no se ha establecido una
             'password'          => static::$password ??= Hash::make('password'),
             'remember_token'    => Str::random(10),
         ];
     }
 
     /**
-     * Indicate that the model's email address should be unverified.
+     * Indica que la dirección de correo electrónico del modelo debe estar no verificada.
      */
     public function unverified(): static
     {
@@ -49,6 +55,3 @@ class UserFactory extends Factory
         ]);
     }
 }
-
-
-

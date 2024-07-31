@@ -46,7 +46,8 @@
     <!-- Contenido LOGIN -->
     <section class="scroll">
         {{-- Validador de errores --}}
-        @if ($errors->any())
+
+        {{-- @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
                     @foreach ($errors->all() as $error)
@@ -54,7 +55,7 @@
                     @endforeach
                 </ul>
             </div>
-        @endif
+        @endif --}}
 
         <form action="{{ route('login') }}" method="POST" class="contenedor_titulos_cajas_login">
             @csrf
@@ -64,7 +65,7 @@
                     <h3>Email</h3>
                 </label>
                 <div class="caja">
-                    <input type="email" name="email" placeholder="Ingrese su correo" required>
+                    <input type="email" name="email" placeholder="Ingrese su email" value="{{ old('email') }}" required>
                 </div>
             </div>
             <div class="contenedor_titulo_caja_login">
@@ -112,5 +113,23 @@
                 this.src = togglePass ? '{{ asset('images/ico-eye-closed.svg') }}' : '{{ asset('images/ico-eye.svg') }}';
             });
         });
+    </script>
+    {{-- Display errors with SweetAlert2 --}}
+    <script>
+        @if (count($errors) > 0)
+            let errorHtml = '';
+            @foreach ($errors->all() as $message)
+                errorHtml += '<li>{{ $message }}</li>';
+            @endforeach
+            Swal.fire({
+                position: "top",
+                title: "Ops !",
+                html: errorHtml,
+                icon: "error",
+                toast: true,
+                showConfirmButton: false,
+                timer: 5000
+            });
+        @endif
     </script>
 @endsection

@@ -914,44 +914,47 @@ main.cuerpo {
         justify-content: center;
         align-items: center;
         position: relative;
-        width: 250px;
-        height: 150px;
+        width: 240px;
+        height: 240px; /* Hacer el contenedor cuadrado para que sea circular */
         overflow: hidden;
-        background: url(../images/marco-perfil.png) no-repeat;
-        background-size: 80%;
-        left: 100px;
-        margin-top: 50px;
-        margin-bottom: 25px;
+        background: url(../images/marco-perfil.png) no-repeat center;
+        background-size: 70%;
+        border-radius: 50%; /* Hacer el contenedor circular */
+        margin-top: 20px;
+        margin-left: auto; /* Centrar horizontalmente el contenedor */
+        margin-right: auto; /* Centrar horizontalmente el contenedor */
+        z-index: 1; /* Asegura que el contenedor esté en una capa superior */
     }
     
     #imagenContenedor img {
-        display: flex;
-        object-fit:contain;
-        width: 150px;
-        height: 80px;
-        left: 80px;
-        margin-right: 60px;
-        margin-top: -20px;
-        
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        object-fit: cover;
+        border-radius: 50%;
+        width: 45%; /* Ajustar el tamaño de la imagen según sea necesario */
+        height: 45%; /* Ajustar el tamaño de la imagen según sea necesario */
+        z-index: 0; /* Asegura que la imagen esté en una capa inferior */
     }
     
-    .img_perfil_usuario{
-        border: none
+    .img_perfil_usuario {
+        border: none;
     }
-
-
+    
     #uploadText {
         position: absolute;
-        top: 40%;
-        left: 40%;
+        top: 50%; /* Centrar verticalmente el texto */
+        left: 50%; /* Centrar horizontalmente el texto */
         transform: translate(-50%, -50%);
         text-align: center;
         font-family: var(--ff-body);
         font-weight: 400;
         color: var(--cian); /* Cambiar color del texto */
-        font-size: 16px; /* Cambiar tamaño del texto */
+        font-size: 14px; /* Cambiar tamaño del texto */
+        z-index: 2; /* Asegura que el texto esté en una capa superior */
     }
-
+    
     #uploadText p {
         margin: 0;
     }
@@ -960,12 +963,14 @@ main.cuerpo {
         position: absolute;
         top: 0;
         left: 0;
-        width: 70%;
-        height: 70%;
+        width: 100%; /* Asegura que cubra todo el contenedor */
+        height: 100%; /* Asegura que cubra todo el contenedor */
         opacity: 0;
         cursor: pointer;
         border: none;
+        z-index: 3; /* Asegura que el input esté en una capa superior */
     }
+    
     
 }
 
