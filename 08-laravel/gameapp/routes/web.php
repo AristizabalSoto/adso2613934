@@ -47,5 +47,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('users');
 });
 
+// routes/web.php o routes/api.php
+Route::post('/users/search', [UserController::class, 'search']);
+
+
+
 // Cargar rutas de autenticación
 require __DIR__.'/auth.php';

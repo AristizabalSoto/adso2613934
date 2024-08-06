@@ -1,5 +1,3 @@
-{{-- gameeapp/resources/views/users/users.blade.php --}}
-
 @extends('layouts.plantilla2')
 
 @section('title', 'Users Module')
@@ -77,6 +75,12 @@
             </section>
         </header>
 
+        <!-- Caja de búsqueda -->
+        <div class="search-box">
+            <input id="qsearch" type="text" placeholder="Buscar">
+            <i class="fas fa-filter filter-icon"></i>
+        </div>
+
         <!-- Contenido principal -->
         <section class="scroll">
             <!-- Botón para añadir usuario -->
@@ -88,30 +92,32 @@
                 </form>
             </div>
 
-            <!-- Contenedor de usuarios -->
-            <section class="contenedor_modulos_dash">
-                @foreach ($users as $user)
-                    <section class="contenedor_dash">
-                        <section class="contenido_dash">
-                            <img src="{{ asset('images/ico-users.png') }}" alt="User Icon" class="img-contenedor-dash">
-                            <div class="texto-contenedor-dash">
-                                <div class="titulo_modulo">
-                                    <p>{{ $user->name }}</p>
+            <div id="list">
+                <!-- Contenedor de usuarios -->
+                <section class="contenedor_modulos_dash">
+                    @foreach ($users as $user)
+                        <section class="contenedor_dash">
+                            <section class="contenido_dash">
+                                <img src="{{ asset('images/ico-users.png') }}" alt="User Icon" class="img-contenedor-dash">
+                                <div class="texto-contenedor-dash">
+                                    <div class="titulo_modulo">
+                                        <p>{{ $user->fullname }}</p> <!-- Cambiado de $user->name a $user->fullname -->
+                                    </div>
+                                    <div class="parrafo_modulo">
+                                        <h3>{{ $user->role }}</h3> <!-- Añadido un campo role en el modelo User -->
+                                    </div>
                                 </div>
-                                <div class="parrafo_modulo">
-                                    <h3>{{ $user->role }}</h3>
+                                <div class="boton_view_dash">
+                                    <a href="{{ url('users/' . $user->id . '/edit') }}" class="btn btn-explore">
+                                        <img class="content-btn-view-dash"
+                                            src="{{ asset('images/content-btn-view-users.svg') }}" alt="View User">
+                                    </a>
                                 </div>
-                            </div>
-                            <div class="boton_view_dash">
-                                <a href="{{ url('edit/' . $user->id) }}" class="btn btn-explore">
-                                    <img class="content-btn-view-dash"
-                                        src="{{ asset('images/content-btn-view-users.svg') }}" alt="View User">
-                                </a>
-                            </div>
+                            </section>
                         </section>
-                    </section>
-                @endforeach
-            </section>
+                    @endforeach
+                </section>
+            </div>
         </section>
     </main>
 @endsection
@@ -125,6 +131,23 @@
                     document.querySelector('.nav').classList.toggle('active');
                     document.querySelector('.contenido_menu').classList.toggle('oculto');
                 }
+            });
+        });
+
+        // Configura un manejador de eventos para el evento 'keyUp' en el campo de búsqueda.
+        $(document).ready(function() {
+            $('body').on('keyup', '#qsearch', function(e) {
+                e.preventDefault();
+                var query = $(this).val();
+                var token = '{{ csrf_token() }}'; // Obtén el token CSRF de la vista
+
+                $.post('/users/search', {
+                    query: query,
+                    _token: token
+                }, function(data) {
+                    $('#list').html(data)
+                    // Procesa los resultados aquí
+                });
             });
         });
     </script>

@@ -1,7 +1,5 @@
 <?php
 
-//gameapp/app/Http/Controllers/UserController.php
-
 namespace App\Http\Controllers;
 
 use App\Models\User;
@@ -119,5 +117,27 @@ class UserController extends Controller
     {
         auth()->logout();
         return redirect('/');
+    }
+
+    /**
+     * Maneja la búsqueda de usuarios.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    
+    public function search(Request $request)
+    {
+        // Validar la solicitud
+        $request->validate([
+            'query' => 'required|string|max:255',
+        ]);
+
+        // Buscar usuarios basados en la consulta
+        $query = $request->input('query');
+        $users = User::where('fullname', 'LIKE', "%$query%")->get();
+
+        // Devolver los resultados como JSON
+        return response()->json($users);
     }
 }
