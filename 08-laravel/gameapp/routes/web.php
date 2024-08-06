@@ -1,5 +1,3 @@
-<!-- gameapp/routes/web.php -->
-
 <?php
 
 use App\Http\Controllers\Auth\RegisteredUserController;
@@ -18,7 +16,7 @@ Route::get('/catalogue', function () {
     return view('catalogue');
 })->name('catalogue');
 
-// Ruta  dashboard, protegida por autenticación y verificación
+// Ruta dashboard, protegida por autenticación y verificación
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -27,12 +25,11 @@ Route::get('/dashboard', function () {
 Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
 Route::post('/register', [RegisteredUserController::class, 'store']);
 
-// Ruta  inicio de sesión
+// Ruta inicio de sesión
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 
 // Ruta para logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-
 
 // Rutas de perfil
 Route::middleware('auth')->group(function () {
@@ -47,10 +44,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('users');
 });
 
-// routes/web.php o routes/api.php
-Route::post('/users/search', [UserController::class, 'search']);
-
-
+// Ruta para la búsqueda de usuarios (POST)
+Route::post('/users/search', [UserController::class, 'search'])->name('users.search');
 
 // Cargar rutas de autenticación
 require __DIR__.'/auth.php';

@@ -63,8 +63,14 @@
                                     Dashboard
                                 </a>
                                 <hr>
-                                <a href="{{ url('logout') }}">
-                                    <img src="{{ asset('images/ico-logout.png') }}" alt="Logout Icon">
+                                <!-- Formulario para el logout -->
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    style="display: none;">
+                                    @csrf
+                                </form>
+                                <a href="./."
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <img src="{{ asset('images/ico-logout.png') }}" alt="Ícono de logout">
                                     LogOut
                                 </a>
                                 <hr>
@@ -91,6 +97,9 @@
                     </button>
                 </form>
             </div>
+
+            {{-- animacion de carga --}}
+            <div class="loader"></div>
 
             <div id="list">
                 <!-- Contenedor de usuarios -->
