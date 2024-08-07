@@ -1,4 +1,4 @@
-{{--ubicacion: gameeapp/resources/views/dashboard.blade.php --}}
+{{-- ubicacion: gameeapp/resources/views/dashboard.blade.php --}}
 
 @extends('layouts.plantilla2')
 
@@ -14,15 +14,19 @@
             <!-- Menú hamburguesa -->
             <div class="burger-menu">
                 <svg class="btn-burger" viewBox="0 0 100 100" width="80">
-                    <path class="line top" d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
+                    <path class="line top"
+                        d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
                     <path class="line middle" d="m 70,50 h -40" />
-                    <path class="line bottom" d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
+                    <path class="line bottom"
+                        d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
                 </svg>
                 <nav class="nav">
                     <section class="contenedor_titulos_myprofile2">
                         {{-- Foto del usuario --}}
-                        <div class="img_perfil_adm">
-                            <img class="img_perfil_usuario" src="{{ Auth::user()->photo }}" alt="Profile Image">
+                        <div class="img_perfiles">
+                            <img class="img_perfil_usuario"
+                                src="{{ Auth::user()->photo ? asset('storage/' . Auth::user()->photo) : asset('images/no-photo.png') }}"
+                                alt="Profile Image">
                         </div>
                         {{-- Datos del usuario --}}
                         <section>
@@ -53,7 +57,8 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
-                            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <a href="#"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 <img src="{{ asset('images/ico-logout.png') }}" alt="Log Out Icon">
                                 LogOut
                             </a>
@@ -69,7 +74,8 @@
     <section class="contenedor_modulos_dash">
         <section class="contenedor_dash">
             <section class="contenido_dash">
-                <img src="{{ asset('images/ico-menu-user-dash.png') }}" alt="Ícono de usuarios" class="img-contenedor-dash">
+                <img src="{{ asset('images/ico-menu-user-dash.png') }}" alt="Ícono de usuarios"
+                    class="img-contenedor-dash">
                 <div class="texto-contenedor-dash">
                     <div class="titulo_modulo">
                         <p>module</p>
@@ -80,14 +86,16 @@
                 </div>
                 <div class="boton_view_dash">
                     <a href="{{ url('users') }}" class="btn btn-explore">
-                        <img class="content-btn-view-dash" src="{{ asset('images/btn-view-dash.png') }}" alt="Ver usuarios">
+                        <img class="content-btn-view-dash" src="{{ asset('images/btn-view-dash.png') }}"
+                            alt="Ver usuarios">
                     </a>
                 </div>
             </section>
         </section>
         <section class="contenedor_dash">
             <section class="contenido_dash">
-                <img src="{{ asset('images/ico-menu-cat-dash.png') }}" alt="Ícono de categorías" class="img-contenedor-dash">
+                <img src="{{ asset('images/ico-menu-cat-dash.png') }}" alt="Ícono de categorías"
+                    class="img-contenedor-dash">
                 <div class="texto-contenedor-dash">
                     <div class="titulo_modulo">
                         <p>module</p>
@@ -98,7 +106,8 @@
                 </div>
                 <div class="boton_view_dash">
                     <a href="{{ url('categories') }}" class="btn btn-explore">
-                        <img class="content-btn-view-dash" src="{{ asset('images/btn-view-dash.png') }}" alt="Ver categorías">
+                        <img class="content-btn-view-dash" src="{{ asset('images/btn-view-dash.png') }}"
+                            alt="Ver categorías">
                     </a>
                 </div>
             </section>
@@ -138,5 +147,3 @@
         });
     </script>
 @endsection
-
-

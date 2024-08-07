@@ -30,6 +30,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
+        // Validar los datos de entrada
         $validator = Validator::make($request->all(), [
             'document' => 'required|integer|unique:users,document',
             'fullname' => 'required|string|max:255',
@@ -41,10 +42,19 @@ class RegisteredUserController extends Controller
             'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
+        // Si la validación falla, redirige de vuelta con los errores
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        // Manejar la carga de la foto del usuario
+        $photoPath = 'no-photo.png'; // Valor por defecto para photo
+
+        if ($request->hasFile('photo')) {
+            $photoPath = $request->file('photo')->store('images', 'public');
+        }
+
+        // Crear el nuevo usuario y guardar en la base de datos
         $user = User::create([
             'document' => $request->document,
             'fullname' => $request->fullname,
@@ -53,7 +63,7 @@ class RegisteredUserController extends Controller
             'phone' => $request->phone,
             'birthdate' => $request->birthdate,
             'password' => Hash::make($request->password),
-            'photo' => $request->hasFile('photo') ? $request->file('photo')->store('photos') : 'no-photo.png', // Valor por defecto para photo
+            'photo' => $photoPath, // Guardar la ruta de la foto
         ]);
 
         // Redirige al usuario al formulario de inicio de sesión con un mensaje de éxito

@@ -3,7 +3,7 @@
     --ff-heading: "Russo One", sans-serif;
     --ff-body: "Poppins", sans-serif;
     --ff-title: "Aldrich", sans-serif;
-    --morado: #23234B;
+    --morado: #23234b;
     --cian: #06cfce;
     --magenta: #d3167c;
     --blanco: #ececed;
@@ -60,7 +60,6 @@ main.cuerpo {
         display: flex;
         justify-content: center;
         align-items: center;
-
     }
 
     .cabecera_catalogue {
@@ -92,8 +91,6 @@ main.cuerpo {
         display: flex;
         justify-content: center;
         align-items: center;
-
-
     }
 
     .cabecera_gamer {
@@ -114,7 +111,6 @@ main.cuerpo {
         justify-content: center;
         align-items: center;
     }
-
 
     .img_perfil_usuario {
         position: relative;
@@ -145,11 +141,13 @@ main.cuerpo {
     }
 
     .contenedor_modulos_dash {
+        position: relative;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
+        margin-bottom: 100px;
+        height: 300px;
     }
-
 
     /* estilos clases contenedor_titulo_caja */
 
@@ -214,43 +212,14 @@ main.cuerpo {
             border: none;
             width: 320px;
             height: 1px;
-            background-color: rgba(6, 207, 206, 0.3)
+            background-color: rgba(6, 207, 206, 0.3);
         }
-
-
     }
-
 
     .contenedor_titulo_view {
         font-size: 1rem;
         margin-top: -5px;
         margin-left: 30px;
-    }
-
-    .contenedor_dash {
-        width: 325px;
-        height: 100px;
-        background-color: var(--cian);
-        border: 1px solid #ccc;
-        border-radius: 15px;
-        margin-bottom: 30px;
-    }
-
-    .contenido_dash {
-        display: flex;
-        align-items: center;
-        padding: 15px;
-    }
-
-    .img-contenedor-dash {
-        margin-right: 10px;
-    }
-
-    .texto-contenedor-dash {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
     }
 
     /*Estilos para clase titulo*/
@@ -306,9 +275,7 @@ main.cuerpo {
         color: var(--morado);
         font-weight: 600;
         font-size: 16px;
-
     }
-
 
     .parrafo_view {
         font-family: var(--ff-body);
@@ -349,14 +316,13 @@ main.cuerpo {
         margin-left: 32px;
     }
 
-
     .botonlogin {
         margin-top: 30px;
         button {
             cursor: pointer;
             border: none;
             outline: none;
-            background: url(../images/btn2.png)no-repeat center;
+            background: url(../images/btn2.png) no-repeat center;
             height: 60px;
             width: 260px;
             display: flex;
@@ -372,7 +338,7 @@ main.cuerpo {
             cursor: pointer;
             border: none;
             outline: none;
-            background: url(../images/btn2.png)no-repeat center;
+            background: url(../images/btn2.png) no-repeat center;
             height: 60px;
             width: 260px;
             display: flex;
@@ -399,7 +365,7 @@ main.cuerpo {
             cursor: pointer;
             border: none;
             outline: none;
-            background: url(../images/btn3.png)no-repeat center;
+            background: url(../images/btn3.png) no-repeat center;
             height: 60px;
             width: 260px;
             display: flex;
@@ -421,8 +387,7 @@ main.cuerpo {
         margin-top: 10px;
         padding: 2px;
 
-
-        p{
+        p {
             font-family: var(--ff-body);
             font-weight: 400;
             font-size: 18px;
@@ -450,14 +415,12 @@ main.cuerpo {
         padding: 0px 60px 0px 70px;
     }
 
-
     /* ______________________________________________________________________________________________________________________________ */
 
     /* Menu hamburgesa */
     .burger-menu {
         position: relative;
     }
-
 
     .btn-burger {
         position: absolute;
@@ -494,7 +457,6 @@ main.cuerpo {
         z-index: 2;
     }
 
-
     .ico-menu {
         display: block;
         margin: auto;
@@ -520,7 +482,6 @@ main.cuerpo {
             border-radius: 20px;
             font-weight: 400;
             font-size: 20px;
-
         }
 
         a:hover {
@@ -534,7 +495,6 @@ main.cuerpo {
             display: inline-block;
             vertical-align: middle;
             margin-right: 0.5rem;
-
         }
     }
 
@@ -545,7 +505,7 @@ main.cuerpo {
         width: 320px;
         height: 1px;
         /* Ajusta la altura de la línea */
-        background-color: rgba(6, 207, 206, 0.2)
+        background-color: rgba(6, 207, 206, 0.2);
     }
 
     /* estilos para icono del menu hamburgueza */
@@ -558,8 +518,7 @@ main.cuerpo {
 
         .line {
             fill: none;
-            transition: stroke-dasharray 400ms,
-                stroke-dashoffset 400ms;
+            transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
             stroke: var(--cian);
             stroke-width: 4;
             stroke-linecap: round;
@@ -739,15 +698,12 @@ main.cuerpo {
         position: relative;
         padding: 0 10px 0 10px;
 
-
-        .ico-eye{
+        .ico-eye {
             cursor: pointer;
             position: absolute;
             right: 10px;
         }
     }
-
-
 
     .caja input {
         flex: 1;
@@ -760,7 +716,6 @@ main.cuerpo {
         outline: none;
         text-align: center;
         color: var(--cian);
-
     }
 
     .caja button {
@@ -899,7 +854,7 @@ main.cuerpo {
 
     /* estilos para el footer */
 
-    .recordar_contraseña{
+    .recordar_contraseña {
         display: flex;
         justify-content: center;
         color: var(--cian);
@@ -970,8 +925,6 @@ main.cuerpo {
         border: none;
         z-index: 3; /* Asegura que el input esté en una capa superior */
     }
-
-
 }
 
 /* Estilos generales para la caja de errores */
@@ -1005,4 +958,89 @@ main.cuerpo {
     font-weight: bold;
 }
 
+/* contendor para imagenes usuario menu precargada */
 
+.img_perfiles {
+    position: relative;
+    width: 150px; /* Ajusta el tamaño según tus necesidades */
+    height: 150px;
+    border: 2px solid var(--cian); /* Ajusta el color del borde según tus necesidades */
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 125px;
+}
+
+.img_perfiles img.img_perfil_usuario {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Contenedor principal de cada elemento de la lista */
+.contenedor_dash {
+    width: 340px;
+    height: 100px;
+    background-color: var(--cian); /* Color de fondo */
+    border-radius: 15px; /* Bordes redondeados */
+    margin-bottom: 20px; /* Espacio inferior entre elementos */
+    box-sizing: border-box; /* Incluye el border en el tamaño total del contenedor */
+    display: flex; /* Usa flexbox para organizar el contenido */
+    align-items: center; /* Alineación vertical centrada */
+}
+
+/* Contenido del contenedor, alineado en fila */
+.contenido_dash {
+    position: relative;
+    display: flex;
+    align-items: center; /* Alineación vertical centrada */
+    width: 100%; /* Ocupa el ancho total del contenedor */
+    left: 10px;
+}
+
+/* Contenedor para la imagen de perfil en miniatura */
+.img_perfil_miniatura {
+    position: relative;
+    width: 60px; /* Tamaño fijo del contenedor */
+    height: 60px; /* Asegúrate de que altura y ancho sean iguales para mantener la forma circular */
+    border: 2px solid var(--morado); /* Color del borde del contenedor */
+    border-radius: 50%; /* Borde circular */
+    overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga del contenedor */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px; /* Espacio entre la imagen y el texto */
+    box-sizing: border-box; /* Incluye el border en el tamaño total del contenedor */
+    left: 10px;
+}
+
+/* Imagen dentro del contenedor */
+.img_perfil_miniatura img.img_perfil_usuario_miniatura {
+    width: 100%; /* Asegura que la imagen cubra todo el contenedor */
+    height: 100%; /* Asegura que la imagen cubra todo el contenedor */
+    object-fit: cover; /* Ajusta la imagen para que cubra el contenedor sin deformarse */
+    display: block; /* Elimina el espacio en blanco debajo de la imagen */
+}
+
+.titulo_modulo {
+    position: relative;
+    left: 20px;
+    color: var(--morado);
+    width: 150px;
+    font-size: 1rem;
+}
+.parrafo_modulo {
+    position: relative;
+    left: 20px;
+    color: var(--magenta);
+    width: 150px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.boton_view_dash {
+    position: relative;
+    right: 20px;
+}
