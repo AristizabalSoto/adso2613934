@@ -47,7 +47,8 @@
     <script>
         $(document).ready(function() {
             $('#main-content').hide();
-            $('#main-content').fadeIn(800);
+            $('#main-content').fadeIn(400);
+            
             // Inicialización del carrusel
             $('.owl-carousel').owlCarousel({
                 loop: true,
@@ -63,24 +64,16 @@
 
             // Evento click para el botón de exploración
             $('.btn-explore').on('click', function(event) {
-                // Previene el comportamiento predeterminado del enlace (evita la redirección inmediata)
                 event.preventDefault();
-
-                // Desaparece el contenido principal con una animación de desvanecimiento de 800ms
-                $('#main-content').fadeOut(800, function() {
-                    // Muestra el loader con una animación de desvanecimiento de 500ms
-                    $('#loader').fadeIn(500, function() {
-                        // Espera 800ms (tiempo durante el cual el loader se muestra)
+                $('#main-content').fadeOut(400, function() {
+                    $('#loader').fadeIn(300, function() {
                         setTimeout(function() {
-                            // Desaparece el loader con una animación de desvanecimiento de 500ms
-                            $('#loader').fadeOut(500, function() {
-                                // Muestra el contenedor del catálogo con una animación de desvanecimiento de 500ms
-                                $('#catalogue-container').fadeIn(500);
-                                // Redirige a la página de catálogo
+                            $('#loader').fadeOut(300, function() {
+                                $('#catalogue-container').fadeIn(300);
                                 window.location.href =
-                                    "{{ route('catalogue') }}";
+                                "{{ route('catalogue') }}";
                             });
-                        }, 400); // Tiempo de duración del loader (400ms)
+                        }, 300);
                     });
                 });
             });

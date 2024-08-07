@@ -43,14 +43,9 @@
                             </a>
 
                             <hr>
-                            <a href="{{ url('register') }}">
+                            <a href="{{ url('register') }}" class="btn-register">
                                 <img src="{{ asset('images/ico-menu-register.png') }}" alt="Register Icon">
                                 Register
-                            </a>
-                            <hr>
-                            <a href="{{ url('catalogue') }}">
-                                <img src="{{ asset('images/ico-menu-catalogue.png') }}" alt="Catalogue Icon">
-                                Catalogue
                             </a>
                             <hr>
                         </menu>
@@ -163,13 +158,11 @@
     </div>
 @endsection
 
-{{-- js de la página --}}
 @section('js')
     <script>
         $(document).ready(function() {
             // Muestra el contenido del catálogo con una carga suave
-            $('#catalogue-content').hide();
-            $('#catalogue-content').fadeIn(800); // Cambia el tiempo si necesitas una carga más suave
+            $('#catalogue-content').hide().fadeIn(400);
 
             // Inicialización del carrusel
             $('.owl-carousel').owlCarousel({
@@ -191,24 +184,32 @@
 
             // Evento click para el botón de login en el menú hamburguesa
             $('.btn-login').on('click', function(event) {
-                // Previene el comportamiento predeterminado del enlace (evita la redirección inmediata)
                 event.preventDefault();
-
-                // Desaparece el contenido actual con una animación de desvanecimiento de 800ms
-                $('#catalogue-content').fadeOut(800, function() {
-                    // Muestra el loader con una animación de desvanecimiento de 500ms
-                    $('#loader').fadeIn(500, function() {
-                        // Espera 400ms (tiempo durante el cual el loader se muestra)
+                $('#catalogue-content').fadeOut(400, function() {
+                    $('#loader').fadeIn(300, function() {
                         setTimeout(function() {
-                            // Desaparece el loader con una animación de desvanecimiento de 500ms
-                            $('#loader').fadeOut(500, function() {
-                                // Redirige a la página de login
+                            $('#loader').fadeOut(300, function() {
                                 window.location.href = "{{ url('login') }}";
                             });
-                        }, 400); // Tiempo de duración del loader (400ms)
+                        }, 300);
+                    });
+                });
+            });
+
+            // Evento click para el botón de registro en el menú hamburguesa
+            $('.btn-register').on('click', function(event) {
+                event.preventDefault();
+                $('#catalogue-content').fadeOut(400, function() {
+                    $('#loader').fadeIn(300, function() {
+                        setTimeout(function() {
+                            $('#loader').fadeOut(300, function() {
+                                window.location.href = "{{ url('register') }}";
+                            });
+                        }, 300);
                     });
                 });
             });
         });
     </script>
 @endsection
+

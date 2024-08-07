@@ -6,6 +6,8 @@
 @section('class', 'cuerpo')
 
 @section('content')
+    <!-- Loader -->
+    <div id="loader" class="loader" style="display: none;"></div>
     <!-- Contenedor global para carga suave -->
     <div id="page-content" style="display: none;">
         <!-- Cabecera -->
@@ -29,12 +31,12 @@
                         <img class="ico-menu-title" src="{{ asset('images/ico-menu-title.svg') }}" alt="Menu">
                         <img class="ico-menu" src="{{ asset('images/ico-menu.png') }}" alt="Icon menu">
                         <menu class="contenido_menu oculto">
-                            <a href="{{ url('login') }}">
+                            <a href="{{ url('login') }}" class="btn-login">
                                 <img src="{{ asset('images/ico-menu-login.png') }}" alt="Login Icon">
                                 Login
                             </a>
                             <hr>
-                            <a href="{{ url('catalogue') }}">
+                            <a href="{{ url('catalogue') }}" class="btn-catalogue">
                                 <img src="{{ asset('images/ico-menu-catalogue.png') }}" alt="Home Icon">
                                 Catalogue
                             </a>
@@ -166,71 +168,101 @@
             </form>
         </section>
     </div>
-    @endsection
+@endsection
 
-    @section('js')
-        {{-- script menu hamburgueza --}}
-        <script>
-            // Ocultar todo el contenido y luego mostrarlo suavemente
-            $('#page-content').hide().fadeIn(800); // Cambia el tiempo si necesitas una carga más suave
-        </script>
-        <script>
-            $('header').on('click', '.btn-burger', function() {
-                $(this).toggleClass('active');
-                $('.nav').toggleClass('active');
-                $('.contenido_menu').toggleClass('oculto');
+@section('js')
+    {{-- script menu hamburgueza --}}
+    <script>
+        // Ocultar todo el contenido y luego mostrarlo suavemente
+        $('#page-content').hide().fadeIn(400);
+    </script>
+    <script>
+        $('header').on('click', '.btn-burger', function() {
+            $(this).toggleClass('active');
+            $('.nav').toggleClass('active');
+            $('.contenido_menu').toggleClass('oculto');
+        });
+    </script>
+
+    <script>
+        // Mostrar/ocultar contraseña
+        document.querySelectorAll('.ico-eye').forEach(eyeIcon => {
+            eyeIcon.addEventListener('click', function() {
+                const passwordInput = this.nextElementSibling;
+                const isPasswordVisible = passwordInput.type === 'password';
+                passwordInput.type = isPasswordVisible ? 'text' : 'password';
+                this.src = isPasswordVisible ? '{{ asset('images/ico-eye-closed.svg') }}' :
+                    '{{ asset('images/ico-eye.svg') }}';
             });
-        </script>
+        });
+    </script>
 
-        <script>
-            // Mostrar/ocultar contraseña
-            document.querySelectorAll('.ico-eye').forEach(eyeIcon => {
-                eyeIcon.addEventListener('click', function() {
-                    const passwordInput = this.nextElementSibling;
-                    const isPasswordVisible = passwordInput.type === 'password';
-                    passwordInput.type = isPasswordVisible ? 'text' : 'password';
-                    this.src = isPasswordVisible ? '{{ asset('images/ico-eye-closed.svg') }}' :
-                        '{{ asset('images/ico-eye.svg') }}';
+    {{-- script photo upload --}}
+    <script>
+        $(document).ready(function() {
+            $('#inputFile').on('change', function(event) {
+                var file = event.target.files[0];
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                    $('#imagenContenedor').find('img').attr('src', event.target.result);
+                    $('#uploadText').hide();
+                }
+                reader.readAsDataURL(file);
+            });
+
+            // Permitir al usuario seleccionar una imagen al hacer clic en cualquier parte del contenedor
+            $('#imagenContenedor').click(function() {
+                $('#inputFile').click();
+            });
+        });
+    </script>
+
+    {{-- Display errors with SweetAlert2 --}}
+    <script>
+        @if (count($errors) > 0)
+            let errorHtml = '';
+            @foreach ($errors->all() as $error)
+                errorHtml += '<li>{{ $error }}</li>';
+            @endforeach
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                html: '<ul>' + errorHtml + '</ul>',
+                showConfirmButton: false,
+                timer: 4000
+            });
+        @endif
+    </script>
+    <script>
+        // Evento click para el botón de login en el menú hamburguesa
+        $('.btn-login').on('click', function(event) {
+            event.preventDefault();
+            $('#page-content').fadeOut(400, function() {
+                $('#loader').fadeIn(300, function() {
+                    setTimeout(function() {
+                        $('#loader').fadeOut(300, function() {
+                            window.location.href =
+                            "{{ url('login') }}";
+                        });
+                    }, 300);
                 });
             });
-        </script>
+        });
 
-        {{-- script photo upload --}}
-        <script>
-            $(document).ready(function() {
-                $('#inputFile').on('change', function(event) {
-                    var file = event.target.files[0];
-                    var reader = new FileReader();
-
-                    reader.onload = function(event) {
-                        $('#imagenContenedor').find('img').attr('src', event.target.result);
-                        $('#uploadText').hide(); // Ocultar el texto de carga
-                    }
-
-                    reader.readAsDataURL(file);
-                });
-
-                // Permitir al usuario seleccionar una imagen al hacer clic en cualquier parte del contenedor
-                $('#imagenContenedor').click(function() {
-                    $('#inputFile').click();
+        // Evento click para el botón de catálogo en el menú hamburguesa
+        $('.btn-catalogue').on('click', function(event) {
+            event.preventDefault();
+            $('#page-content').fadeOut(400, function() {
+                $('#loader').fadeIn(300, function() {
+                    setTimeout(function() {
+                        $('#loader').fadeOut(300, function() {
+                            window.location.href =
+                            "{{ url('catalogue') }}";
+                        });
+                    }, 300);
                 });
             });
-        </script>
+        });
+    </script>
 
-        {{-- Display errors with SweetAlert2 --}}
-        <script>
-            @if (count($errors) > 0)
-                let errorHtml = '';
-                @foreach ($errors->all() as $error)
-                    errorHtml += '<li>{{ $error }}</li>';
-                @endforeach
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error',
-                    html: '<ul>' + errorHtml + '</ul>',
-                    showConfirmButton: false,
-                    timer: 4000
-                });
-            @endif
-        </script>
-    @endsection
+@endsection

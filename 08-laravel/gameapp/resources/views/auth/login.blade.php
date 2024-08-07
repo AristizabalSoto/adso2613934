@@ -6,6 +6,8 @@
 @section('class', 'cuerpo')
 
 @section('content')
+    <!-- Loader -->
+    <div id="loader" class="loader" style="display: none;"></div>
     <!-- Contenedor global para carga suave -->
     <div id="page-content" style="display: none;">
         <!-- Cabecera -->
@@ -29,12 +31,12 @@
                         <img class="ico-menu-title" src="{{ asset('images/ico-menu-title.svg') }}" alt="Menu">
                         <img class="ico-menu" src="{{ asset('images/ico-menu.png') }}" alt="Icon menu">
                         <menu class="contenido_menu oculto">
-                            <a href="{{ url('register') }}">
+                            <a href="{{ url('register') }}" class="btn-register">
                                 <img src="{{ asset('images/ico-menu-register.png') }}" alt="Register Icon">
                                 Register
                             </a>
                             <hr>
-                            <a href="{{ url('catalogue') }}">
+                            <a href="{{ url('catalogue') }}" class="btn-catalogue">
                                 <img src="{{ asset('images/ico-menu-catalogue.png') }}" alt="Catalogue Icon">
                                 Catalogue
                             </a>
@@ -55,7 +57,8 @@
                         <h3>Email</h3>
                     </label>
                     <div class="caja">
-                        <input type="email" name="email" placeholder="Ingrese su email" value="{{ old('email') }}" required>
+                        <input type="email" name="email" placeholder="Ingrese su email" value="{{ old('email') }}"
+                            required>
                     </div>
                 </div>
                 <div class="contenedor_titulo_caja_login">
@@ -71,7 +74,8 @@
                 <footer>
                     <div class="botonlogin">
                         <button type="submit" class="btn btn-explore">
-                            <img class="content-btn2-footer" src="{{ asset('images/content-btn2-footer.svg') }}" alt="Login">
+                            <img class="content-btn2-footer" src="{{ asset('images/content-btn2-footer.svg') }}"
+                                alt="Login">
                         </button>
                         <a class="recordar_contraseña" href="#">Forgot your password?</a>
                     </div>
@@ -83,16 +87,16 @@
 
 @section('js')
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             // Ocultar todo el contenido y luego mostrarlo suavemente
-            $('#page-content').hide().fadeIn(800); // Cambia el tiempo si necesitas una carga más suave
+            $('#page-content').hide().fadeIn(400); // Cambia el tiempo si necesitas una carga más suave
 
             // Menú hamburguesa
             const burgerButton = document.querySelector('.btn-burger');
             const nav = document.querySelector('.nav');
             const menu = document.querySelector('.contenido_menu');
 
-            burgerButton.addEventListener('click', function () {
+            burgerButton.addEventListener('click', function() {
                 burgerButton.classList.toggle('active');
                 nav.classList.toggle('active');
                 menu.classList.toggle('oculto');
@@ -100,11 +104,12 @@
 
             // Mostrar/ocultar contraseña
             let togglePass = false;
-            document.querySelector('.ico-eye').addEventListener('click', function () {
+            document.querySelector('.ico-eye').addEventListener('click', function() {
                 const passwordInput = this.nextElementSibling;
                 togglePass = !togglePass;
                 passwordInput.type = togglePass ? 'text' : 'password';
-                this.src = togglePass ? '{{ asset('images/ico-eye-closed.svg') }}' : '{{ asset('images/ico-eye.svg') }}';
+                this.src = togglePass ? '{{ asset('images/ico-eye-closed.svg') }}' :
+                    '{{ asset('images/ico-eye.svg') }}';
             });
         });
     </script>
@@ -127,4 +132,34 @@
             });
         @endif
     </script>
+    <script>
+        // Evento click para el botón de registro en el menú hamburguesa
+        $('.btn-register').on('click', function(event) {
+            event.preventDefault();
+            $('#page-content').fadeOut(400, function() {
+                $('#loader').fadeIn(300, function() {
+                    setTimeout(function() {
+                        $('#loader').fadeOut(300, function() {
+                            window.location.href = "{{ url('register') }}";
+                        });
+                    }, 300);
+                });
+            });
+        });
+
+        // Evento click para el botón de catálogo en el menú hamburguesa
+        $('.btn-catalogue').on('click', function(event) {
+            event.preventDefault();
+            $('#page-content').fadeOut(400, function() {
+                $('#loader').fadeIn(300, function() {
+                    setTimeout(function() {
+                        $('#loader').fadeOut(300, function() {
+                            window.location.href = "{{ url('catalogue') }}";
+                        });
+                    }, 300);
+                });
+            });
+        });
+    </script>
+
 @endsection
