@@ -20,38 +20,41 @@
                 </svg>
                 <nav class="nav">
                     <section class="contenedor_titulos_myprofile2">
+                        {{-- Foto del usuario --}}
                         <div class="img_perfil_adm">
-                            <img class="img_perfil_usuario" src="{{ asset('images/perfilusuario2.png') }}" alt="Perfil">
+                            <img class="img_perfil_usuario" src="{{ Auth::user()->photo }}" alt="Profile Image">
                         </div>
+                        {{-- Datos del usuario --}}
                         <section>
                             <div>
+                                {{-- Nombre del usuario --}}
                                 <div class="titulo_myprofile">
-                                    <h3>Jeremias Juper</h3>
+                                    <p>{{ Auth::user()->fullname }}</p> <!-- Muestra el nombre del usuario autenticado -->
                                 </div>
-                                <div class="botonprofyle">
-                                    <a href="{{ url('catalogue') }}" class="btn btn-explore">
-                                        <img class="content-btn4-myprofyle" src="{{ asset('images/content-btn4-footer.svg') }}" alt="Explorar">
-                                    </a>
+                                {{-- Rol del usuario --}}
+                                <div class="boton_role"> <!-- Muestra el rol del usuario autenticado -->
+                                    <div>
+                                        <p>{{ Auth::user()->role }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </section>
                         <menu class="contenedor_titulo_myprofile">
-                            <a href="{{ url('myprofile') }}">
-                                <img src="{{ asset('images/ico-profyle.png') }}" alt="Ícono de perfil">
+                            <a href="{{ url('profile') }}">
+                                <img src="{{ asset('images/ico-profyle.png') }}" alt="Profile Icon">
                                 My Profile
                             </a>
                             <hr>
                             <a href="{{ url('dashboard') }}">
-                                <img src="{{ asset('images/ico-conf.png') }}" alt="Ícono de dashboard">
+                                <img src="{{ asset('images/ico-conf.png') }}" alt="Dashboard Icon">
                                 Dashboard
                             </a>
                             <hr>
-                            <!-- Formulario para el logout -->
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
-                            <a href="./." onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                <img src="{{ asset('images/ico-logout.png') }}" alt="Ícono de logout">
+                            <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <img src="{{ asset('images/ico-logout.png') }}" alt="Log Out Icon">
                                 LogOut
                             </a>
                             <hr>

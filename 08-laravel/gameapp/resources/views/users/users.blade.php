@@ -4,17 +4,11 @@
 @section('class', 'cuerpo')
 
 @section('content')
-    <!-- Contenido principal -->
-    <main class="cuerpo">
-        <!-- Cabecera -->
         <header>
             <section class="cabecera_users">
-                <!-- Botón de retroceso -->
                 <a href="{{ url('dashboard') }}">
                     <img class="icoback-users" src="{{ asset('images/btn_back.png') }}" alt="Back Button">
                 </a>
-
-                <!-- Logo de la cabecera -->
                 <img class="logotitulo-users" src="{{ asset('images/logo-cabecera_users.svg') }}" alt="Logo">
 
                 <!-- Menú hamburguesa -->
@@ -26,32 +20,28 @@
                         <path class="line bottom"
                             d="m 30,67 h 40 c 0,0 8.5,0.149796 8.5,-8.5 0,-8.649796 -8.5,-8.5 -8.5,-8.5 h -20 v 20" />
                     </svg>
-
-                    <!-- Navegación del menú hamburguesa -->
                     <nav class="nav">
                         <section class="contenedor_titulos_myprofile2">
-                            <!-- Imagen del perfil -->
+                            {{-- Foto del usuario --}}
                             <div class="img_perfil_adm">
-                                <img class="img_perfil_usuario" src="{{ asset('images/perfilusuario2.png') }}"
-                                    alt="Profile Image">
+                                <img class="img_perfil_usuario" src="{{ Auth::user()->photo }}" alt="Profile Image">
                             </div>
-
-                            <!-- Información del usuario -->
+                            {{-- Datos del usuario --}}
                             <section>
                                 <div>
+                                    {{-- Nombre del usuario --}}
                                     <div class="titulo_myprofile">
-                                        <h3>Jeremias Juper</h3>
+                                        <p>{{ Auth::user()->fullname }}</p>
+                                        <!-- Muestra el nombre del usuario autenticado -->
                                     </div>
-                                    <div class="botonprofyle">
-                                        <a href="{{ url('catalogue') }}" class="btn btn-explore">
-                                            <img class="content-btn4-myprofyle"
-                                                src="{{ asset('images/content-btn4-footer.svg') }}" alt="Explore">
-                                        </a>
+                                    {{-- Rol del usuario --}}
+                                    <div class="boton_role"> <!-- Muestra el rol del usuario autenticado -->
+                                        <div>
+                                            <p>{{ Auth::user()->role }}</p>
+                                        </div>
                                     </div>
                                 </div>
                             </section>
-
-                            <!-- Menú de navegación -->
                             <menu class="contenedor_titulo_myprofile">
                                 <a href="{{ url('profile') }}">
                                     <img src="{{ asset('images/ico-profyle.png') }}" alt="Profile Icon">
@@ -63,14 +53,13 @@
                                     Dashboard
                                 </a>
                                 <hr>
-                                <!-- Formulario para el logout -->
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                     style="display: none;">
                                     @csrf
                                 </form>
-                                <a href="./."
+                                <a href="#"
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    <img src="{{ asset('images/ico-logout.png') }}" alt="Ícono de logout">
+                                    <img src="{{ asset('images/ico-logout.png') }}" alt="Log Out Icon">
                                     LogOut
                                 </a>
                                 <hr>
@@ -81,15 +70,13 @@
             </section>
         </header>
 
-        <!-- Caja de búsqueda -->
+
         <div class="search-box">
             <input id="qsearch" type="text" placeholder="Buscar">
             <i class="fas fa-filter filter-icon"></i>
         </div>
 
-        <!-- Contenido principal -->
         <section class="scroll">
-            <!-- Botón para añadir usuario -->
             <div class="botonuser">
                 <form action="{{ url('users/create') }}">
                     <button class="btn-user" type="submit">
@@ -98,11 +85,7 @@
                 </form>
             </div>
 
-            {{-- animacion de carga --}}
-            <div class="loader"></div>
-
             <div id="list">
-                <!-- Contenedor de usuarios -->
                 <section class="contenedor_modulos_dash">
                     @foreach ($users as $user)
                         <section class="contenedor_dash">
@@ -110,10 +93,10 @@
                                 <img src="{{ asset('images/ico-users.png') }}" alt="User Icon" class="img-contenedor-dash">
                                 <div class="texto-contenedor-dash">
                                     <div class="titulo_modulo">
-                                        <p>{{ $user->fullname }}</p> <!-- Cambiado de $user->name a $user->fullname -->
+                                        <p>{{ $user->fullname }}</p>
                                     </div>
                                     <div class="parrafo_modulo">
-                                        <h3>{{ $user->role }}</h3> <!-- Añadido un campo role en el modelo User -->
+                                        <h3>{{ $user->role }}</h3>
                                     </div>
                                 </div>
                                 <div class="boton_view_dash">
@@ -128,7 +111,6 @@
                 </section>
             </div>
         </section>
-    </main>
 @endsection
 
 @section('js')
@@ -138,24 +120,21 @@
                 if (event.target.closest('.btn-burger')) {
                     document.querySelector('.btn-burger').classList.toggle('active');
                     document.querySelector('.nav').classList.toggle('active');
-                    document.querySelector('.contenido_menu').classList.toggle('oculto');
                 }
             });
         });
 
-        // Configura un manejador de eventos para el evento 'keyUp' en el campo de búsqueda.
         $(document).ready(function() {
             $('body').on('keyup', '#qsearch', function(e) {
                 e.preventDefault();
                 var query = $(this).val();
-                var token = '{{ csrf_token() }}'; // Obtén el token CSRF de la vista
+                var token = '{{ csrf_token() }}';
 
                 $.post('/users/search', {
                     query: query,
                     _token: token
                 }, function(data) {
-                    $('#list').html(data)
-                    // Procesa los resultados aquí
+                    $('#list').html(data);
                 });
             });
         });
