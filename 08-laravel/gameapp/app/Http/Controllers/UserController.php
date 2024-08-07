@@ -1,5 +1,7 @@
 <?php
 
+// ubicación: gameapp/app/Http/Controllers/UserController.php
+
 namespace App\Http\Controllers;
 
 use App\Models\User;
@@ -11,6 +13,8 @@ class UserController extends Controller
 {
     /**
      * Muestra una lista de todos los usuarios.
+     *
+     * @return \Illuminate\View\View
      */
     public function index()
     {
@@ -20,6 +24,8 @@ class UserController extends Controller
 
     /**
      * Muestra el formulario para crear un nuevo usuario.
+     *
+     * @return \Illuminate\View\View
      */
     public function create()
     {
@@ -35,13 +41,14 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $user = User::create([
+            'document' => $request->document,
             'fullname' => $request->fullname,
             'gender' => $request->gender,
             'email' => $request->email,
             'phone' => $request->phone,
             'birthdate' => $request->birthdate,
             'password' => Hash::make($request->password),
-            'photo' => $request->hasFile('photo') ? $request->file('photo')->store('photos') : null,
+            'photo' => $request->hasFile('photo') ? $request->file('photo')->store('photos') : 'no-photo.png', // Valor por defecto para photo
         ]);
 
         return redirect()->route('dashboard')->with('success', 'User created successfully.');
@@ -68,6 +75,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $request->validate([
+            'document' => 'required|integer|unique:users,document,' . $user->id,
             'fullname' => 'required|string|max:255',
             'gender' => 'required|string',
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
@@ -77,6 +85,7 @@ class UserController extends Controller
             'photo' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
 
+        $user->document = $request->document;
         $user->fullname = $request->fullname;
         $user->gender = $request->gender;
         $user->email = $request->email;
@@ -125,7 +134,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    
+
     public function search(Request $request)
     {
         // Validar la solicitud

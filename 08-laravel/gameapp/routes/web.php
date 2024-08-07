@@ -1,5 +1,7 @@
 <?php
 
+// ubicacion: gameapp/routes/web.php
+
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProfileController;
@@ -31,17 +33,14 @@ Route::post('/login', [LoginController::class, 'login'])->name('login');
 // Ruta para logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// Rutas de perfil
+//Rutas de perfil
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    // Rutas de usuarios (CRUD)
+    // Rutas de usuarios (CRUD) protegidas por autenticación
     Route::resource('users', UserController::class);
-
-    // Ruta del módulo de usuarios, protegida por autenticación
-    Route::get('/users', [UserController::class, 'index'])->name('users');
 });
 
 // Ruta para la búsqueda de usuarios (POST)
@@ -49,3 +48,5 @@ Route::post('/users/search', [UserController::class, 'search'])->name('users.sea
 
 // Cargar rutas de autenticación
 require __DIR__.'/auth.php';
+
+

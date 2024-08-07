@@ -1,16 +1,23 @@
 <?php
 
+// Ubicación del archivo: app/Models/User.php
+
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+/**
+ * Modelo de usuario.
+ *
+ */
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
     protected $fillable = [
+        'document', // Agregado aquí
         'fullname',
         'gender',
         'email',
@@ -19,7 +26,6 @@ class User extends Authenticatable
         'password',
         'photo',
         'role',
-        // Elimina 'document' de aquí
     ];
 
     protected $hidden = [
@@ -40,5 +46,3 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Collection');
     }
 }
-
-

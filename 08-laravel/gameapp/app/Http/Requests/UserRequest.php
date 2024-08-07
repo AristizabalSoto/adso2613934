@@ -1,16 +1,19 @@
 <?php
 
+// ubicación: gameapp/app/Http/Requests/UserRequest.php
+
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class UserRequest extends FormRequest
 {
     /**
-     * Determina si el usuario está autorizado para realizar esta solicitud.
+     * Determina si el usuario está autorizado a realizar esta solicitud.
+     *
+     * @return bool
      */
-    public function authorize(): bool
+    public function authorize()
     {
         return true;
     }
@@ -18,20 +21,15 @@ class UserRequest extends FormRequest
     /**
      * Obtiene las reglas de validación que se aplican a la solicitud.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array
      */
-    public function rules(): array
+    public function rules()
     {
         return [
+            'document' => 'required|integer|unique:users,document',
             'fullname' => 'required|string|max:255',
-            'gender' => 'required|string|in:male,female',
-            'email' => [
-                'required',
-                'string',
-                'email',
-                'max:255',
-                Rule::unique('users')->ignore($this->user->id ?? null),
-            ],
+            'gender' => 'required|string',
+            'email' => 'required|string|email|max:255|unique:users,email',
             'phone' => 'required|string|max:20',
             'birthdate' => 'required|date',
             'password' => 'required|string|confirmed|min:8',

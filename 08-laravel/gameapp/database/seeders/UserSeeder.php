@@ -1,5 +1,7 @@
 <?php
 
+// ubicacion: gameapp/database/seeders/UserSeeder.php
+
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
@@ -16,17 +18,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // Using ORM Eloquent
-        $user = new User();
-        $user->document = '1245678';
-        $user->fullname = 'Robin';
-        $user->gender = 'Male';
-        $user->birthdate = '1990-12-28';
-        $user->phone = '3187542708';
-        $user->email = 'robin@gmail.com';
-        $user->password = Hash::make('admin');
-        $user->role = 'administrador';
-        $user->save();
+        // Insertar datos específicos
 
         $user = new User();
         $user->document = '1053810807';
@@ -39,10 +31,10 @@ class UserSeeder extends Seeder
         $user->role = 'administrador';
         $user->save();
 
-        // Using DB facade
+        // Usar el facade DB para insertar un tercer usuario específico
         DB::table('users')->insert([
             'document' => '7546821',
-            'fullname' => 'pablo Aristizabal',
+            'fullname' => 'Pablo Aristizabal',
             'gender' => 'Male',
             'birthdate' => '1990-08-30',
             'phone' => '45321246',
@@ -52,7 +44,8 @@ class UserSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
+        // Usar el factory para crear 50 usuarios ficticios
+        User::factory(20)->create();
     }
 }
-
-
