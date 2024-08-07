@@ -60,7 +60,7 @@ main.cuerpo {
         display: flex;
         justify-content: center;
         align-items: center;
-        
+
     }
 
     .cabecera_catalogue {
@@ -92,7 +92,7 @@ main.cuerpo {
         display: flex;
         justify-content: center;
         align-items: center;
-        
+
     }
 
     .cabecera_gamer {
@@ -113,7 +113,7 @@ main.cuerpo {
         justify-content: center;
         align-items: center;
     }
-    
+
 
     .img_perfil_usuario {
         position: relative;
@@ -303,7 +303,7 @@ main.cuerpo {
         color: var(--morado);
         font-weight: 600;
         font-size: 16px;
-        
+
     }
 
 
@@ -738,16 +738,16 @@ main.cuerpo {
         margin-bottom: 10px;
         position: relative;
         padding: 0 10px 0 10px;
-        
+
 
         .ico-eye{
             cursor: pointer;
             position: absolute;
             right: 10px;
-        }  
+        }
     }
 
-    
+
 
     .caja input {
         flex: 1;
@@ -785,7 +785,7 @@ main.cuerpo {
         justify-content: center; /* Centra los elementos horizontalmente dentro de la caja */
         gap: 10px; /* Espacio entre las opciones de radio */
     }
-    
+
     /* Estilos para cada opción dentro de la caja de radio */
     .caja-radio label {
         display: flex;
@@ -796,18 +796,18 @@ main.cuerpo {
         font-family: var(--ff-body);
         font-weight: 400;
     }
-    
+
     /* Estilos para los inputs de radio */
     .caja-radio input[type="radio"] {
         accent-color: var(--magenta); /* Cambia el color del botón de radio */
         margin-right: 10px;
     }
-    
+
     /* Estilos para los textos dentro de las opciones */
     .caja-radio span {
         flex-grow: 1;
     }
-    
+
     /* Estilos para el botón de enviar dentro de la caja de radio */
     .caja-radio button {
         background-color: var(--cian);
@@ -821,12 +821,12 @@ main.cuerpo {
         margin-top: 10px;
         width: 100%;
     }
-    
+
     /* Efecto hover para el botón de enviar */
     .caja-radio button:hover {
         background-color: var(--magenta);
     }
-    
+
     /* Efectos adicionales para mejorar la apariencia */
     .caja-radio .option {
         padding: 10px;
@@ -835,12 +835,12 @@ main.cuerpo {
         margin-bottom: 5px;
         background-color: var(--blanco);
     }
-    
+
     .caja-radio .option:hover {
         background-color: var(--cian);
         color: var(--blanco);
     }
-    
+
     .caja-radio .option input[type="radio"]:checked + span {
         color: var(--magenta);
     }
@@ -925,7 +925,7 @@ main.cuerpo {
         margin-right: auto; /* Centrar horizontalmente el contenedor */
         z-index: 1; /* Asegura que el contenedor esté en una capa superior */
     }
-    
+
     #imagenContenedor img {
         position: absolute;
         top: 50%;
@@ -937,11 +937,11 @@ main.cuerpo {
         height: 45%; /* Ajustar el tamaño de la imagen según sea necesario */
         z-index: 0; /* Asegura que la imagen esté en una capa inferior */
     }
-    
+
     .img_perfil_usuario {
         border: none;
     }
-    
+
     #uploadText {
         position: absolute;
         top: 50%; /* Centrar verticalmente el texto */
@@ -954,11 +954,11 @@ main.cuerpo {
         font-size: 14px; /* Cambiar tamaño del texto */
         z-index: 2; /* Asegura que el texto esté en una capa superior */
     }
-    
+
     #uploadText p {
         margin: 0;
     }
-    
+
     #inputFile {
         position: absolute;
         top: 0;
@@ -970,8 +970,8 @@ main.cuerpo {
         border: none;
         z-index: 3; /* Asegura que el input esté en una capa superior */
     }
-    
-    
+
+
 }
 
 /* Estilos generales para la caja de errores */
@@ -1004,4 +1004,5 @@ main.cuerpo {
     margin: 0;
     font-weight: bold;
 }
+
 
