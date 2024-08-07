@@ -1,3 +1,5 @@
+/* Ubicación: gameapp/public/css/index.css */
+
 /* Variables de colores y fuentes */
 :root {
     --ff-heading: "Russo One", sans-serif;
@@ -21,6 +23,8 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    margin: 0; /* Asegura que no haya margen alrededor del body */
+    overflow: hidden; /* Evita el scroll cuando el contenido está oculto */
 }
 
 /* ----------------------------------------------------------------------------------------------- */
@@ -30,6 +34,8 @@ main {
     background: url(../images/01-Welcome.png) no-repeat;
     height: 800px;
     width: 400px;
+    position: relative; /* Asegura que <main> esté sobre otros elementos */
+    z-index: 1;
 }
 
 /* --------------------------------------------------------------------------------------------- */
@@ -62,10 +68,7 @@ main.cuerpo {
         margin-left: 25px;
     }
 
-
-    /* estilos para los slider */
-
-    /* estilos generales */
+    /* Estilos para los sliders */
     section.slider {
         display: flex;
         flex-direction: column;
@@ -75,14 +78,15 @@ main.cuerpo {
             width: 280px;
             margin: auto;
         }
-    /* estilos para los nav o botones del slider */
+
+        /* Estilos para los nav o botones del slider */
         div.owl-nav {
             position: relative;
             top: -186px;
             display: flex;
             justify-content: space-between;
             color: var(--cian);
-        
+
             button {
                 transition: transform 0.2s ease-in, box-shadow 0.2s ease-in, border-color 0.2s ease-in;
                 border: 2px solid;
@@ -97,39 +101,32 @@ main.cuerpo {
                 justify-content: center;
                 cursor: pointer;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-                margin: 10px 10px 10px 10px; /* Ajustar el espacio entre botones */
-        
-                /* Ajustar el espacio entre botones */
-                &:hover {
-                    transform: scale(1.1);
-                    background: var(--cian);
-                }
-        
-                /* ajustes personalizados el span dentro del boton */
+                margin: 10px; /* Ajusta el espacio entre botones */
+                
+                /* Ajustes personalizados el span dentro del boton */
                 span {
                     font-weight: 200;
                     position: relative;
                     align-items: center;
                     justify-content: center;
-                    top: -3px; /* ajuste para centrar verticalmente */
+                    top: -3px; /* Ajuste para centrar verticalmente */
                     margin-left: -2px; /* Ajuste horizontal */
                 }
             }
-        
+
             /* Estilos para el span dentro del primer botón */
             button:nth-child(1) span {
                 left: 1px;
             }
-        
+
             /* Estilos para el span dentro del segundo botón */
             button:nth-child(2) span {
                 left: 2px;
             }
         }
 
-    /* estilos para los botones tipo dots  */
-
-        .owl-dots{
+        /* Estilos para los botones tipo dots  */
+        .owl-dots {
             position: relative;
             top: -30px;
         }
@@ -152,7 +149,7 @@ main.cuerpo {
         justify-content: center;
         align-items: center;
 
-        /* estilos boton enter */
+        /* Estilos botón enter */
         a:is(:link, visited) {
             background: url(../images/btn.png) no-repeat;
             height: 70px;
@@ -171,7 +168,7 @@ main.cuerpo {
         }
 
         a:is(:hover) {
-            background: url(../images/Boton-hover.png)no-repeat center;
+            background: url(../images/Boton-hover.png) no-repeat center;
             transform: scale(1) translate(-4px);
         }
 
@@ -179,4 +176,60 @@ main.cuerpo {
             background: url(../images/btn-active.png) no-repeat center;
         }
     }
+}
+
+/* --------------------------------------------------------------------------------------------- */
+
+/* Loader CSS */
+.loader {
+    width: 120px;
+    height: 22px;
+    border-radius: 40px;
+    color: var(--cian);
+    border: 2px solid;
+    position: fixed; /* Asegúrate de que el loader esté fijo en la pantalla */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centra el loader */
+    z-index: 9999; /* Asegúrate de que esté encima de otros elementos */
+    display: none; /* Oculto por defecto */
+}
+
+.loader::before {
+    content: "";
+    position: absolute;
+    margin: 2px;
+    width: 25%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: inherit;
+    background: currentColor;
+    animation: l3 1s infinite linear;
+}
+
+@keyframes l3 {
+    50% {
+        left: 100%;
+        transform: translateX(calc(-100% - 4px));
+    }
+}
+
+/* Clase para ocultar todo excepto <main> y el loader */
+.hidden {
+    visibility: hidden; /* Oculta el contenido pero mantiene el espacio */
+    position: absolute; /* Asegura que no afecte el layout */
+    width: 100%; /* Asegura que ocupe todo el ancho */
+    height: 100%; /* Asegura que ocupe toda la altura */
+}
+
+.hidden * {
+    display: none; /* Oculta todos los elementos dentro de .hidden */
+}
+
+.hidden main,
+.hidden .loader {
+    visibility: visible; /* Asegura que <main> y el loader sean visibles */
+    position: static; /* Restablece la posición para <main> y el loader */
+    display: block; /* Asegura que <main> y el loader se muestren */
 }

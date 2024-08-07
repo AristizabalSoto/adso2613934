@@ -1,4 +1,4 @@
-{{-- gameeapp/resources/views/catalogue.blade.php --}}
+{{-- Ubicación gameapp/resources/views/catalogue.blade.php --}}
 
 @extends('layouts.plantilla2')
 
@@ -9,13 +9,16 @@
     <!-- Cabecera -->
     <header>
         <section class="cabecera_catalogue">
+            <!-- Botón de regreso -->
             <a href="{{ url('/') }}">
                 <img class="icoback" src="{{ asset('images/btn_back.png') }}" alt="Back Button">
             </a>
+            <!-- Logo -->
             <img class="logotitulo" src="{{ asset('images/ico-menu-title.svg') }}" alt="Logo">
 
             <!-- Menú hamburguesa -->
             <div class="burger-menu">
+                <!-- Icono del menú hamburguesa -->
                 <svg class="btn-burger" viewBox="0 0 100 100" width="80">
                     <path class="line top"
                         d="m 70,33 h -40 c 0,0 -8.5,-0.149796 -8.5,8.5 0,8.649796 8.5,8.5 8.5,8.5 h 20 v -20" />
@@ -28,6 +31,7 @@
                     <img class="ico-menu-title" src="{{ asset('images/ico-menu-title.svg') }}" alt="Menu">
                     <img class="ico-menu" src="{{ asset('images/ico-menu.png') }}" alt="Icon Menu">
                     <menu class="contenido_menu">
+                        <!-- Enlaces del menú -->
                         <a href="{{ url('login') }}">
                             <img src="{{ asset('images/ico-menu-login.png') }}" alt="Login Icon">
                             Login
@@ -157,6 +161,7 @@
 @section('js')
     <script>
         $(document).ready(function() {
+            // Inicialización del carrusel
             $('.owl-carousel').owlCarousel({
                 loop: true,
                 margin: 10,
@@ -168,6 +173,7 @@
                 }
             });
 
+            // Función para el menú hamburguesa
             $('header').on('click', '.btn-burger', function() {
                 $(this).toggleClass('active');
                 $('.nav').toggleClass('active');

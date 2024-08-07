@@ -1,3 +1,5 @@
+{{-- Ubicación: gameapp/resources/views/welcome.blade.php --}}
+
 <!-- Usa el layout 'plantilla1' -->
 @extends('layouts.plantilla1')
 
@@ -7,6 +9,7 @@
 <!-- Clase para <main> -->
 @section('class', 'cuerpo')
 
+<!-- Contenido principal -->
 @section('content')
     <!-- Encabezado con logo -->
     <header>
@@ -15,32 +18,49 @@
 
     <!-- Sección del carrusel -->
     <section class="slider owl-carousel owl-theme">
+        <!-- Imágenes del carrusel -->
         <img class="item" src="{{ asset('images/slide01.png') }}" alt="Slide01">
-        <img class="item" src="{{ asset('images/slide01.png') }}" alt="Slide02">
-        <img class="item" src="{{ asset('images/slide01.png') }}" alt="Slide03">
+        <img class="item" src="{{ asset('images/slide02.png') }}" alt="Slide02">
+        <img class="item" src="{{ asset('images/slide03.png') }}" alt="Slide03">
     </section>
 
     <!-- Pie de página con botón de exploración -->
     <footer>
-        <a href="{{ route('catalogue') }}" class="btn btn-explore">
+        <a href="#" class="btn btn-explore">
             <img class="content-btn-footer" src="{{ asset('images/content-btn-footer.svg') }}" alt="explore">
         </a>
     </footer>
+
+    <!-- Loader HTML -->
+    <div class="loader" id="loader"></div>
 @endsection
 
+<!-- Sección para scripts JS específicos de esta vista -->
 @section('js')
     <script>
         $(document).ready(function() {
+            // Inicialización del carrusel
             $('.owl-carousel').owlCarousel({
-                loop: true,
-                margin: 10,
-                nav: true,
-                dots: false,
+                loop: true,           // Hace que el carrusel sea circular
+                margin: 10,           // Espacio entre los elementos del carrusel
+                nav: true,            // Muestra botones de navegación (anterior y siguiente)
+                dots: false,          // Oculta los indicadores de puntos
                 responsive: {
                     0: {
-                        items: 1
+                        items: 1      // Muestra 1 elemento a la vez en pantallas pequeñas
                     }
                 }
+            });
+
+            // Mostrar el loader y ocultar el contenido excepto <main> y el loader antes de redirigir
+            $('.btn-explore').click(function(event) {
+                event.preventDefault(); // Evita el comportamiento predeterminado del enlace
+                $('body').addClass('hidden'); // Oculta el contenido excepto <main> y el loader
+                $('#loader').show(); // Muestra el loader
+
+                setTimeout(function() {
+                    window.location.href = "{{ route('catalogue') }}"; // Redirige después de 2 segundos
+                }, 2000);
             });
         });
     </script>
